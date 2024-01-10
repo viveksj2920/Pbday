@@ -1,0 +1,212 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: white;
+}
+
+#scene {
+    background: linear-gradient(to bottom, #071021 0%, #232867 100%); /* Gradient for night sky */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#moon {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(ellipse at center, #fff 0%, #d0d0d0 70%, #aaa 100%);
+    box-shadow: 0 0 15px #fff, 0 0 30px #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#dialogue {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#countdown {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+
+/* Snowflakes Style */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    background: white;
+    opacity: 0.8;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.5; /* Adjust for a more natural look */
+    animation: fall linear infinite;
+}
+
+/* Keyframes for falling snow animation */
+@keyframes fall {
+    0% { top: -10px; opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Snow cover style */
+#snowCover {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%; /* Adjust the height to your preference */
+    background-color: white;
+    opacity: 0.8;
+    z-index: 0;
+    border-radius: 50% / 10%; /* Adjust for desired curvature */
+    overflow: hidden; /* To keep the snowflakes within the curve */
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 -15px 10px -10px #e0e0e0;
+}
+
+#animatedDog {
+    position: absolute;
+    bottom: 10%; /* Adjust based on snow cover */
+    right: 150px;
+    width: 250px; /* Adjust to the desired size */
+    height: 250px; /* Adjust to the desired size */
+    background-image: url('dog.png'); /* Path to your PNG dog image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+    animation: moveDog 2s linear infinite alternate;
+}
+
+@keyframes moveDog {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); } /* Simple up and down movement */
+}
+
+
+#dogDialogue {
+    position: absolute;
+    bottom: 25rem; /* Adjust to position near the dog's mouth */
+    right: 20rem; /* Adjust as necessary */
+    width: 20rem; /* Adjust as necessary */
+    height: 20rem; /* Adjust as necessary */
+    padding: 10px;
+    background: white;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    color: black; /* Adjust as necessary */
+    font-size: 2rem;
+}
+
+#dogDialogue:after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 20px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.hidden {
+    display: none;
+}
+
+
+button {
+    width: 5rem; 
+    height: 3rem; 
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50; /* Or any color you prefer */
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#countdown {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    position: absolute; /* Position absolutely within the scene */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact centering */
+}
+
+
+#shootingStar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10px; /* Increased size */
+    height: 10px; /* Increased size */
+    background: yellow; /* Star color */
+    border-radius: 50%;
+    box-shadow: 0 0 15px yellow, 0 0 30px yellow; /* Enhanced brightness */
+    opacity: 0;
+    z-index: 3;
+}
+
+@keyframes shootingStar {
+    0% {
+        top: 0;
+        left: 50%;
+        opacity: 1;
+        transform: translateX(-50%) rotate(45deg) scale(1); /* Adjusted starting scale */
+    }
+    100% {
+        top: 100%;
+        left: 80%;
+        opacity: 0;
+        transform: translateX(-50%) rotate(45deg) scale(6); /* Increased scale transformation */
+    }
+}
+
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    #animatedDog {
+        right: 10px; /* Adjust position for smaller screens */
+        width: 150px; /* Smaller size for mobile */
+        height: 150px;
+    }
+
+    #dogDialogue {
+        bottom: 8rem; /* Adjust position for smaller screens */
+        right: 10rem;
+        width: 15rem; /* Adjust width for smaller screens */
+    }
+
+    #moon {
+        width: 100px; /* Smaller moon for mobile */
+        height: 100px;
+    }
+
+    #countdown {
+        font-size: 1.5rem; /* Smaller font for mobile */
+    }
+
+    /* Adjust other elements as necessary for mobile */
+}
